@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faruq Rathod | Laravel Developer Portfolio</title>
+  <meta name="description" content="Professional animated portfolio of Faruq Rathod - Laravel Developer, ERP & PHP Developer." />
+
+  <style>
+    :root {
+      --bg: #f8fbff;
+      --card: rgba(255, 255, 255, 0.82);
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --purple: #7c3aed;
+      --cyan: #06b6d4;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: rgba(226, 232, 240, 0.9);
+      --soft: #eff6ff;
+      --shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.16), transparent 28%),
+        radial-gradient(circle at 90% 15%, rgba(124, 58, 237, 0.14), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(6, 182, 212, 0.12), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bg-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: .48;
+      z-index: 0;
+      animation: floatOrb 9s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 170px;
+      height: 170px;
+      background: rgba(37, 99, 235, .22);
+      left: -55px;
+      top: 160px;
+    }
+
+    .orb-2 {
+      width: 220px;
+      height: 220px;
+      background: rgba(124, 58, 237, .18);
+      right: -70px;
+      top: 420px;
+      animation-delay: 1.5s;
+    }
+
+    .orb-3 {
+      width: 150px;
+      height: 150px;
+      background: rgba(6, 182, 212, .18);
+      left: 18%;
+      bottom: 80px;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes floatOrb {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(28px, -32px, 0) scale(1.08); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      animation: fadeDown .8s ease both;
+    }
+
+    .brand span {
+      background: linear-gradient(135deg, var(--primary), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #334155;
+      animation: fadeDown .9s ease both;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--purple));
+      transition: .3s ease;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      padding: 92px 0 54px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(239, 246, 255, .9);
+      border: 1px solid rgba(191, 219, 254, .9);
+      color: var(--primary-dark);
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+      animation: fadeUp .7s ease both;
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 rgba(34, 197, 94, .7);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, .55); }
+      70% { box-shadow: 0 0 0 9px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.04;
+      margin: 0 0 18px;
+      letter-spacing: -2.2px;
+      animation: fadeUp .9s ease both;
+      animation-delay: .1s;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 200%;
+      animation: gradientMove 4s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 0 30px;
+      animation: fadeUp 1s ease both;
+      animation-delay: .2s;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      animation: fadeUp 1.1s ease both;
+      animation-delay: .3s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 16px;
+      padding: 13px 20px;
+      font-weight: 900;
+      border: 1px solid transparent;
+      transition: transform .24s ease, box-shadow .24s ease, background .24s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 80%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: skewX(-20deg);
+      transition: .55s ease;
+    }
+
+    .btn:hover::before {
+      left: 130%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.20);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--purple));
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,.82);
+      color: var(--text);
+      border-color: var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      transform-style: preserve-3d;
+      animation: fadeLeft 1s ease both, cardFloat 4.2s ease-in-out infinite;
+      animation-delay: .18s, 1.2s;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .avatar {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #9333ea, #06b6d4);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 38px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      box-shadow: 0 18px 34px rgba(37, 99, 235, .28);
+      position: relative;
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      border: 2px dashed rgba(37, 99, 235, .35);
+      animation: spin 9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-card h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .profile-card p {
+      margin: 6px 0 18px;
+      color: var(--muted);
+    }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+      font-size: 15px;
+    }
+
+    .info-item {
+      padding: 12px 14px;
+      background: rgba(248, 250, 252, .85);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      color: #334155;
+      word-break: break-word;
+      transition: .25s ease;
+    }
+
+    .info-item:hover {
+      transform: translateX(5px);
+      border-color: rgba(37, 99, 235, .4);
+      background: #fff;
+    }
+
+    section {
+      padding: 54px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: 36px;
+      margin: 0 0 10px;
+      letter-spacing: -1px;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 68px;
+      height: 4px;
+      margin-top: 10px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--purple));
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: 0 9px 26px rgba(15, 23, 42, 0.06);
+      backdrop-filter: blur(16px);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    .card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 24px 46px rgba(15, 23, 42, 0.12);
+      border-color: rgba(37, 99, 235, .35);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .pill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .pill {
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, .86);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-weight: 800;
+      color: #334155;
+      box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+      transition: .24s ease;
+      animation: popIn .7s ease both;
+    }
+
+    .pill:hover {
+      transform: translateY(-4px) scale(1.03);
+      color: var(--primary-dark);
+      border-color: rgba(37, 99, 235, .45);
+      background: #fff;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline .card {
+      border-left: 5px solid var(--primary);
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--primary-dark);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .project-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.12));
+      color: var(--primary);
+      border-radius: 17px;
+      font-size: 23px;
+      margin-bottom: 14px;
+      transition: .28s ease;
+    }
+
+    .card:hover .project-icon {
+      transform: rotate(-5deg) scale(1.12);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      color: var(--primary);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb, #7c3aed);
+      background-size: 200% 200%;
+      animation: gradientMove 5s ease infinite;
+      border-radius: 30px;
+      color: #fff;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      right: -55px;
+      top: -55px;
+      background: rgba(255,255,255,.16);
+    }
+
+    .contact-box::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      left: -50px;
+      bottom: -60px;
+      background: rgba(255,255,255,.12);
+    }
+
+    .contact-box > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-box h2 {
+      margin: 0 0 10px;
+      font-size: 35px;
+    }
+
+    .contact-box p {
+      margin: 0;
+      opacity: .92;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-actions a {
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.30);
+      padding: 13px 16px;
+      border-radius: 15px;
+      font-weight: 900;
+      transition: .25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-actions a:hover {
+      background: rgba(255,255,255,.25);
+      transform: translateX(6px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(28px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(42px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(15px) scale(.94); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .contact-box,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        height: auto;
+        padding: 16px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.3px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">Faruq <span>Rathod</span></a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge"><span class="pulse-dot"></span> Laravel Developer • ERP & PHP Developer</div>
+          <h1>Building modern <span class="gradient-text">ERP, Laravel & PHP</span> business applications.</h1>
+          <p>
+            I am a motivated Computer Engineering graduate with hands-on experience in Laravel,
+            PHP, ERP systems, workflow automation, responsive dashboards, inventory systems,
+            and trainee management solutions.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="mailto:faruqrathod91@gmail.com">Hire Me</a>
+            <a class="btn btn-outline" href="#projects">View Projects</a>
+            <a class="btn btn-outline" href="https://github.com/faruk-32" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar">FR</div>
+          <h2>Faruq Rathod</h2>
+          <p>Laravel Developer | ERP & PHP Developer</p>
+          <div class="info-list">
+            <div class="info-item">📧 faruqrathod91@gmail.com</div>
+            <div class="info-item">📞 9978656948</div>
+            <div class="info-item">📍 Anand, Gujarat, India</div>
+            <div class="info-item">🔗 linkedin.com/in/FaruqkhanRathod</div>
+            <div class="info-item">💻 github.com/faruk-32</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          I specialize in developing practical web applications for business workflows.
+          My focus is on clean UI, reliable backend logic, database-driven features,
+          and ERP-style automation that helps organizations manage operations more efficiently.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>ERP Development</h3>
+            <p>Experience with ERP modules, workflow automation, role-based access, reports, and business process tools.</p>
+          </div>
+          <div class="card">
+            <h3>Laravel & PHP</h3>
+            <p>Hands-on development of inventory, billing, dashboards, and PHP-based management systems.</p>
+          </div>
+          <div class="card">
+            <h3>Responsive UI</h3>
+            <p>Modern, mobile-friendly interfaces using HTML5, CSS3, JavaScript, and clean dashboard layouts.</p>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>3+</strong><span>Major Projects</span></div>
+          <div class="stat"><strong>2+</strong><span>Frameworks</span></div>
+          <div class="stat"><strong>7.88</strong><span>CGPA</span></div>
+          <div class="stat"><strong>2025</strong><span>Graduate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Technologies and tools I use to build business web applications.</p>
+
+        <div class="pill-wrap">
+          <span class="pill">PHP</span>
+          <span class="pill">Python</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Laravel</span>
+          <span class="pill">Frappe Framework</span>
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">Responsive UI</span>
+          <span class="pill">MySQL</span>
+          <span class="pill">Git</span>
+          <span class="pill">GitHub</span>
+          <span class="pill">VS Code</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Debugging</span>
+          <span class="pill">Workflow Automation</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <p class="section-subtitle">Professional internship and development experience.</p>
+
+        <div class="timeline">
+          <div class="card">
+            <div class="meta">Nov 2025 – May 2026</div>
+            <h3>Software Engineer Intern – Brainbean Technolabs</h3>
+            <ul>
+              <li>Worked on ERP live projects and software modules.</li>
+              <li>Developed Laravel and PHP functionalities with optimized workflows.</li>
+              <li>Improved debugging processes and application performance.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="meta">Jan 2025 – Apr 2025</div>
+            <h3>Intern – National Dairy Development Board (NDDB)</h3>
+            <ul>
+              <li>Assisted ICT department operations and enterprise systems support.</li>
+              <li>Supported enterprise application and system-related activities.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="meta">Jun 2024 – Jul 2024</div>
+            <h3>Intern – Tech Elecon</h3>
+            <ul>
+              <li>Learned industrial workflow and software operations.</li>
+              <li>Gained exposure to practical software development processes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Selected projects based on Laravel, Frappe Framework, PHP, and business workflow systems.</p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="project-icon">📦</div>
+            <h3>Inventory Management System</h3>
+            <p><strong>Laravel Framework</strong></p>
+            <ul>
+              <li>Developed inventory and billing management system using Laravel and MySQL.</li>
+              <li>Implemented stock management, reporting, product tracking, and responsive dashboards.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="project-icon">👥</div>
+            <h3>Trainee Management System</h3>
+            <p><strong>Frappe Framework</strong></p>
+            <ul>
+              <li>Built trainee attendance tracking and workflow automation modules.</li>
+              <li>Developed responsive UI and ERP-based reporting features.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="project-icon">🏢</div>
+            <h3>Society Management System</h3>
+            <p><strong>PHP</strong></p>
+            <ul>
+              <li>Developed society management web application using PHP, HTML, CSS, and JavaScript.</li>
+              <li>Added enquiry management, notices, maintenance tracking, and dashboard modules.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+          <div class="meta">2021 – 2025</div>
+          <h3>Bachelor of Engineering – Computer Engineering</h3>
+          <p>Gujarat Technological University, Ahmedabad, Gujarat</p>
+          <p><strong>CGPA:</strong> 7.88</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2>Let’s build something professional.</h2>
+            <p>Available for Laravel, PHP, ERP, dashboard, and business application development opportunities.</p>
+          </div>
+          <div class="contact-actions">
+            <a href="mailto:faruqrathod91@gmail.com">Email Me</a>
+            <a href="tel:+919978656948">Call: 9978656948</a>
+            <a href="https://linkedin.com/in/FaruqkhanRathod" target="_blank" rel="noopener">LinkedIn Profile</a>
+            <a href="https://github.com/faruk-32" target="_blank" rel="noopener">GitHub Profile</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Faruq Rathod. Professional Animated Portfolio.
+  </footer>
+</body>
+</html>
