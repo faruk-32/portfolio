@@ -12,7 +12,7 @@ Motivated Computer Engineering graduate with hands-on experience in Laravel, PHP
 
 ## 🌐 Live Portfolio
 
-👉 https://yourusername.github.io/portfolio/
+👉 https://faruqkhan.onslate.in
 
 ---
 
